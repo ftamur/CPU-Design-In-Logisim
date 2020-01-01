@@ -1,0 +1,42 @@
+
+# load address of vectors.
+addi $1, $0, 0 # address of A
+addi $2, $0, 4 # address of B
+addi $3, $0, 8 # address of C
+
+# constants
+addi $4, $0, 0 # value of sum = 0
+addi $5, $0, 0 # value of i = 0
+addi $6, $0, 4 # value of 4 to travel until i == 3
+
+
+while:
+	beq $5, $6, while_exit
+
+	add $7, $1, $5 		# address of a[i]
+	add $8, $2, $5 		# address of b[i]
+
+	lw $9, 0($7) 		# value of a[i]
+	lw $10, 0($8) 		# value of b[i]
+
+	mult $9, $10 		# sum = a[i] * b[i]
+	mflo $4			# move mflo to $4
+	sll $11, $4, 1  	# sum * 2
+
+	add $12, $3, $5 	# address of c[i]
+
+	sw $11, 0($12) 		# c[i] = sum * 2
+
+	addi $5, $5, 1 		# i++
+
+	j while
+
+while_exit:
+
+	
+
+	
+	
+
+
+
